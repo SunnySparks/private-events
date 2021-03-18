@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  get 'events/index'
   get 'users/index'
   get 'users/new'
-  get '/users/show'
+  get 'users/show'
   post 'users/new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :users, only: [:new, :create, :destroy]
+  resources :users, only: [:new, :create, :show]
   root 'events#index'
 end

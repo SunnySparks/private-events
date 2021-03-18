@@ -6,8 +6,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(session[:user_id])
     @user.name = current_user.name
+    @events = User.created_events.all
   end
 
   def new
