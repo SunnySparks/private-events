@@ -21,15 +21,7 @@ class EventsController < ApplicationController
     end
   end
 
-  def rsvp
-    @event = Event.find(params[:id])
-    if @event.attendees.include?(current_user)
-      redirect_to @event, notice: "You are already on the list"
-    else
-      @event.attendees << current_user
-      redirect_to @event
-    end
-  end
+
 
 
   private
