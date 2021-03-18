@@ -1,6 +1,2 @@
 <% provide(:title, @user.name) %>
-<% @users.each do |user| %>
-    <tr>
-      <td><%= user.created_events %></td>
-    </tr>
-  <% end %>
+<%= @events %>

@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   post 'users/new'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users, only: [:new, :create, :show]
-  root 'events#index'
+  resources :events, only: [:new, :create, :index, :show]
+  root to: "users#new"
 end

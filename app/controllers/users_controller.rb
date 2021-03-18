@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(session[:user_id])
     @user.name = current_user.name
-    @events = User.created_events.all
   end
 
   def new
