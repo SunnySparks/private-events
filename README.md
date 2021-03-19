@@ -1,24 +1,67 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This event application is built in Ruby and Ruby on Rails. You can create event invitations for your friends to see them, and also you can see the list of upcoming and past events.
 
-Things you may want to cover:
+###Built With
 
-* Ruby version
+* Ruby 2.5.8
 
-* System dependencies
+* Ruby on Rails 6.1.3
 
-* Configuration
+* Rubocop - linter
 
-* Database creation
+* Visual Studio Code
 
-* Database initialization
+  
+###Setup
 
-* How to run the test suite
+In order to run the application 
 
-* Services (job queues, cache servers, search engines, etc.)
+* 1 - Make a clone of the [repository:](https://github.com/SunnySparks/private-events).
 
-* Deployment instructions
 
-* ...
+
+
+* 2 - Open the project directory with your preferred code editor (VSCode, Sublime Text, Etc).
+
+
+* 3 - Open the terminal, drag and drop the project's folder into it and hit enter, make sure the route to the project is shown.
+
+
+* 4 - Then still in the terminal type `rails s` in order to get the server up and running.
+
+
+* 5 - Go to your web browser and type the address http://localhost:3000/.
+
+
+* 6 - If it's the first time you open the project inside your browser, you will see an empty page, sign up by typing your username in the form, the you will be able to start creating your events
+
+
+* 7 - After you are logged in, you will be able to see the upcoming events, also you will be able to create new ones.
+
+
+## Authors
+
+👤 **José Francisco Silva Díaz**
+
+- GitHub: [@SunnySpark](https://github.com/SunnySparks)
+- Twitter: [@JosfranT6](https://twitter.com/JosFranT6)
+
+
+
+### 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/SunnySparks/private-events/issues).
+
+### Show your support
+
+Give a ⭐️ if you like this project!
+
+
+### 📝 License
+
+
+This project is [MIT Licensed](https://github.com/SunnySparks/private-events/blob/feature/LICENSE)
+
