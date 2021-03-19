@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'users/new'
   get 'users/show'
   post 'users/new'
+  post 'events/index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users, only: [:new, :create, :show]
   resources :events, only: [:new, :create, :index, :show]

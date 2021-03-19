@@ -13,7 +13,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.events.build(event_params)
+    @user = User.find_by(id: session[:user_id])
+    @event = @user.events.build(event_params)
     if @event.save
       redirect_to :action => 'show', :id => @event.id
     else
@@ -26,10 +27,10 @@ class EventsController < ApplicationController
 
   private
   def post_params
-    params.require(:event).permit(:title)
+    params.require(:event).permit(:location)
   end
 
   def event_params
-    params.require(:event).permit(:title, :user_id, :time)
+    params.require(:event).permit(:location)
   end
 end
