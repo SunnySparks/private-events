@@ -1,0 +1,6 @@
+<% provide(:title, @user.name) %>
+<%= @events %>
+<h2>"Welcome,"</h2>
+<h1><%= @user.name %></h1>
+<h2>"create your events here"</h2>
+<%= render 'form', event: @event %>

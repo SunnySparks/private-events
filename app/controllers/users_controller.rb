@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(session[:user_id])
     @user.name = current_user.name
+    @users = User.all
   end
 
   def new

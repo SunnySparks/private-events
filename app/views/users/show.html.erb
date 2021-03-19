@@ -2,3 +2,42 @@
 <%= @events %>
 <h2>"Hi,"</h2>
 <h2><%= @user.name %></h2>
+<% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+    </tr>
+<% end %>
+
+
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+        <h2 class="title is-2 is-spaced has-text-centered">Attending Events</h2>
+        #<%= @events = Event.where('start >= ?', Date.today).order(:start) %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+        <h2 class="title is-2 is-spaced has-text-centered">Upcoming Events</h2>
+        #<%= @events = Event.where('start >= ?', Date.today).order(:start) %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+        <h2 class="title is-2 is-spaced has-text-centered">Previous Events</h2>
+        #<%= @events = Event.where('start <= ?', Date.today).order(:start) %>
+      </div>
+    </div>
+  </div>
+</div>

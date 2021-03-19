@@ -1,4 +1,26 @@
 <h1>Events#index</h1>
 <p>Find me in app/views/events/index.html.erb</p>
 <%= @events.all %>
-<%= render 'form', event: @event %>
+
+
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+        <h2 class="title is-2 is-spaced has-text-centered">Upcoming Events</h2>
+        #<%= @events = Event.where('start >= ?', Date.today).order(:start) %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+        <h2 class="title is-2 is-spaced has-text-centered">Previous Events</h2>
+        #<%= @events = Event.where('start <= ?', Date.today).order(:start) %>
+      </div>
+    </div>
+  </div>
+</div>
