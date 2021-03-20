@@ -1,11 +1,22 @@
 <h1>Events#index</h1>
 <p>Find me in app/views/events/index.html.erb</p>
-<% "Events" %>
-<% @events.each do |event| %>
-    <tr>
-      <td><%= event %></td>
-    </tr>
-<% end %>
+
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+        <% "Events" %>
+        <% @events.each do |event| %>
+            <tr>
+              <td><%= @event %></td>
+            </tr>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 
 <div class="section">

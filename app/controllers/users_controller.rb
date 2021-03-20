@@ -8,7 +8,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(session[:user_id])
     @user.name = current_user.name
-    @users = User.all
   end
 
   def new
@@ -19,13 +18,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
       if @user.save
         session[:user_id] = @user.id
-
         redirect_to users_index_path
         if params[:remember_name]
-
           cookies[:commenter_name] = @comment.name
         else
-
           cookies.delete(:commenter_name)
         end
       else
