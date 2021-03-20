@@ -19,13 +19,13 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
       if @user.save
         session[:user_id] = @user.id
-        #redirect_to :action => 'show', :id => session[:user_id]
+
         redirect_to users_index_path
         if params[:remember_name]
-          # Remember the commenter's name.
+
           cookies[:commenter_name] = @comment.name
         else
-          # Delete cookie for the commenter's name cookie, if any.
+
           cookies.delete(:commenter_name)
         end
       else
