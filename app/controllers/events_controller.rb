@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   
   def new
     @event = Event.new
+    @user = current_user
   end
 
   def show
@@ -14,7 +15,7 @@ class EventsController < ApplicationController
 
   def create
     @user = User.find_by(id: session[:user_id])
-    @event = @user.events.build(event_params)
+    @event = @user.event.build(event_params)
     if @event.save
       redirect_to :action => 'show', :id => @event.id
     else
