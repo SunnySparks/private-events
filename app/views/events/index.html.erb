@@ -5,10 +5,9 @@
   <div class="container">
 	<div class="columns is-centered">
       <div class="column is-4">
-        <% "Events" %>
         <% @events.each do |event| %>
             <tr>
-              <td><%= @event %></td>
+              <td><%= event.location %></td>
             </tr>
         <% end %>
       </div>
@@ -24,7 +23,7 @@
 	<div class="columns is-centered">
       <div class="column is-4">
         <h2 class="title is-2 is-spaced has-text-centered">Upcoming Events</h2>
-        <%= @event %>
+        <%= @event.all %>
       </div>
     </div>
   </div>
@@ -35,7 +34,7 @@
 	<div class="columns is-centered">
       <div class="column is-4">
         <h2 class="title is-2 is-spaced has-text-centered">Previous Events</h2>
-        <%= @event %>
+        <%= @event.all %>
       </div>
     </div>
   </div>
