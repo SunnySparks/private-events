@@ -3,7 +3,7 @@ class EventsController < ApplicationController
     @events = Event.all
     @event = current_user.events
   end
-  
+
   def new
     @event = Event.new
     @user = current_user
@@ -18,16 +18,14 @@ class EventsController < ApplicationController
     @user = current_user
     @event = @user.created_events.build(event_params)
     if @event.save
-      redirect_to :action => 'show', :id => @event.id
+      redirect_to action: 'show', id: @event.id
     else
       render :new
     end
   end
 
-
-
-
   private
+
   def post_params
     params.require(:event).permit(:location)
   end
