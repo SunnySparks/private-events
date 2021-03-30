@@ -12,6 +12,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @events = Event.all
+    @user = User.find_by(id: session[:user_id])
   end
 
   def create
