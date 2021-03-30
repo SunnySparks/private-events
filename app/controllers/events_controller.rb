@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
+    @event = Event.find_by(params[:id])
     @events = Event.all
     @user = User.find_by(id: session[:user_id])
   end

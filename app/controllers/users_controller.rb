@@ -1,13 +1,16 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
     @user = current_user
+    @users = User.all
     @name = current_user.name
   end
 
   def show
     @user = User.find(session[:user_id])
     @user.name = current_user.name
+    @users = User.all
+    @event = Event.find_by(params[:id])
+    @events = Event.all
   end
 
   def new
