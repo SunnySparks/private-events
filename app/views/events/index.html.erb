@@ -1,13 +1,16 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<% provide(:title, @user.name) %>
+<h2>"Welcome, "</h2>
+<h2><%= @user.name %></h2>
 
 <div class="section">
   <div class="container">
 	<div class="columns is-centered">
       <div class="column is-4">
+        <h2 class="title is-2 is-spaced has-text-centered">All the Events</h2>
         <% @events.each do |event| %>
             <tr>
-              <td><%= event.location %></td>
+              <td><%= event.location %></td></br>
+              <td><%= event.date %></td></br>
             </tr>
         <% end %>
       </div>

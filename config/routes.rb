@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   resources :events, only: [:new, :create, :index, :show]
   resources :registrations, only: [:create]
   root to: "users#new"
+  
+  resources :events do
+    post 'attend', on: :member
+  end
 end

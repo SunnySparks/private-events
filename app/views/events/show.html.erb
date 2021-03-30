@@ -1,5 +1,5 @@
 <% provide(:title, @user.name) %>
-<h2><% "Welcome, " %></h2>
+<h2>"Welcome, "</h2>
 <h2><%= @user.name %></h2>
 
 <div class="section">
@@ -35,7 +35,11 @@
 	<div class="columns is-centered">
       <div class="column is-4">
         <h2 class="title is-2 is-spaced has-text-centered">Previous Events</h2>
+        <td><%= link_to "#{@event.location}", @event %></td>
+        <td><%=  @event.creator.name %></td>
 
+        <span>Invitees: <%= User.find(@event.attendees.map { |enr| enr.user_id }).count %></span>
+        <%= button_to 'Attend', attend_event_path(@event), method: :post, confirm: 'really?' %>
       </div>
     </div>
   </div>

@@ -1,7 +1,11 @@
 class EventsController < ApplicationController
+  
+
   def index
     @events = Event.all
     @event = current_user.events
+    @user = User.find_by(id: session[:user_id])
+    @atendee
   end
 
   def new
@@ -10,7 +14,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by(params[:id])
+    @event = Event.find_by(params[:event_id])
     @events = Event.all
     @user = User.find_by(id: session[:user_id])
   end
@@ -23,6 +27,11 @@ class EventsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def attend
+    @event.attendees << current_user
+    @event.save
   end
 
   private
