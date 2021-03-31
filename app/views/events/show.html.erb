@@ -35,16 +35,19 @@
 	<div class="columns is-centered">
       <div class="column is-4">
         <h2 class="title is-2 is-spaced has-text-centered">Attendees</h2>
-        
-        <td><%=  @user.name %></td></br>
-        
         <td><%= link_to "#{@event.location}", @event %></td>
         <td><%=  "Event created by: " %></td>
         <td><%=  @event.creator.name %></td></br>
-        
 
         
-        <span>Invitees: <%= User.find(@event.attendees.map { |enr| enr.user_id }).count %></span>
+        <%= "Attendees" %>
+        <% @attendees.each do | attendee | %>
+          <tr>
+            <td><%= attendee.name %></td></br>
+          </tr>
+        <% end %>
+
+        <span>Number of attendees: <%= User.find(@event.attendees.map { |enr| enr.id }).count %></span>
         <%= button_to 'Attend', attend_event_path(@event), method: :post, confirm: 'really?' %>
       </div>
     </div>
