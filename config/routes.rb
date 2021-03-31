@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   get 'users/index'
   get 'users/new'
   get 'users/show'
+  #get 'events/:id/attendees'
+  get 'events/show'
   post 'users/new'
   post 'events/index'
+  
 
   resources :users, only: [:new, :create, :show]
   resources :events, only: [:new, :create, :index, :show]
