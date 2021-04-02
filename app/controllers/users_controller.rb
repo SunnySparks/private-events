@@ -3,11 +3,12 @@ class UsersController < ApplicationController
     @user = current_user
     @users = User.all
     @name = current_user.name
+    @event = Event.find_by(params[:id])
   end
 
   def show
-    @user = User.find(session[:user_id])
-    @user.name = current_user.name
+    @user = User.find_by(session[:user_id])
+    #@user.name = current_user.name
     @users = User.all
     @event = Event.find_by(params[:id])
     @events = Event.all

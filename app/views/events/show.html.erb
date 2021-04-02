@@ -4,8 +4,8 @@
 	<div class="columns is-centered">
       <div class="column is-4">
       <% if logged_in? %>
-      Welcome, <%= current_user.name %>!
-      <%=link_to  logout_path %>
+      <h1>Welcome, <%= current_user.name %>!</h1>
+      <%= link_to "Log out", logout_path %>
     <% else %>
       <%= link_to login_path %>
     <% end %>
@@ -23,6 +23,7 @@
         <tr>
         <td><%= event.location %></td></br>
         <td><%= event.date %></td></br>
+        <%= button_to 'Attend', attend_event_path(@event), method: :post, confirm: 'really?' %>
         </tr>
       <% end %>
       </div>
@@ -30,51 +31,24 @@
   </div>
 </div>
 
-
 <div class="section">
   <div class="container">
 	<div class="columns is-centered">
-      <div class="column is-4">
-        <h2 class="title is-2 is-spaced has-text-centered">Upcoming Events</h2>
-        <td><%= @event.location %></td>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <div class="container">
-	<div class="columns is-centered">
+    <h2 class="title is-2 is-spaced has-text-centered">Upcoming Events</h2>
       <div class="column is-4">
       <td><%= link_to "#{@event.location}", @event %></td>
       <td><%=  "Event created by: " %></td>
       <td><%=  @event.creator.name %></td></br>
-        <h2 class="title is-2 is-spaced has-text-centered">Attendees List</h2>
+        <h3 class="title is-2 is-spaced has-text-centered">Attendees List</h3>
+        <span>Number of attendees: <%= User.find(@event.attendees.map { |enr| enr.id }).count %></span></br>
 
-
-        
-        <%= "Attendees: " %>
-        <td><%=  @attendees.all %></td></br>
-        <% @attendees.each do | attendee | %>
-          <tr>
-            <td><%= attendee.name %></td></br>
-          </tr>
-        <% end %>
-
-        <span>Number of attendees: <%= User.find(@event.attendees.map { |enr| enr.id }).count %></span>
-        <%= button_to 'Attend', attend_event_path(@event), method: :post, confirm: 'really?' %>
+        <% if @event.attendees.empty? %>
+        <span>Nobody has confirmed yet, be the first one!</span>
+      <% else %>
+        <%= render 'list', event: @event %>
+      <% end %>
       </div>
     </div>
   </div>
 </div>
 
-<div class="section">
-  <div class="container">
-	<div class="columns is-centered">
-      <div class="column is-4">
-        <h2 class="title is-2 is-spaced has-text-centered">Upcoming Events</h2>
-        <%= link_to "Log out", logout_path %>
-      </div>
-    </div>
-  </div>
-</div>

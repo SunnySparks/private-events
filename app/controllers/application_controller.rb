@@ -1,8 +1,5 @@
 class ApplicationController < ActionController::Base
-    skip_before_action :verify_authenticity_token
-  
-    protect_from_forgery with: :exception
-    before_action :login_required
+
   
     #This method checks if we have a user signed in
     def login_required
