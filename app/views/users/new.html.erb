@@ -2,6 +2,21 @@
   <div class="container">
 	<div class="columns is-centered">
       <div class="column is-4">
+      <% if logged_in? %>
+      Welcome, <%= current_user.name %>!
+      <%=link_to  logout_path %>
+    <% else %>
+      <%= link_to login_path %>
+    <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
         <h2 class="title is-2 is-spaced has-text-centered">Sign Up</h2>
         <%= render 'form', user: @user %>
       </div>

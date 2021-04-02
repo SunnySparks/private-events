@@ -1,6 +1,18 @@
 <% provide(:title, @user.name) %>
-<h2>"Welcome, "</h2>
-<h2><%= @user.name %></h2>
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+      <% if logged_in? %>
+      Welcome, <%= current_user.name %>!
+      <%=link_to  logout_path %>
+    <% else %>
+      <%= link_to login_path %>
+    <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="section">
   <div class="container">

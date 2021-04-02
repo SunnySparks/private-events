@@ -1,7 +1,21 @@
 <% provide(:title, @user.name) %>
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+      <% if logged_in? %>
+      Welcome, <%= current_user.name %>!
+      <%=link_to  logout_path %>
+    <% else %>
+      <%= link_to login_path %>
+    <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <%= @events %>
 <h2>"Welcome,"</h2>
-<h1><%= @user.name %></h1>
-<h1><%= @user.id %></h1>
+
 <h2>"create your events here"</h2>
 <%= render 'form', event: @event %>
