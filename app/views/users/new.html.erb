@@ -1,13 +1,12 @@
-<% provide(:title, @user.name) %>
 <div class="section">
   <div class="container">
 	<div class="columns is-centered">
       <div class="column is-4">
       <% if logged_in? %>
-      <h1>Welcome, <%= current_user.name %>!</h1>
-      <%= link_to "Log out", logout_path %>
+      Welcome, <%= current_user.name %>!
+      <%=link_to  logout_path %>
     <% else %>
-      <%= link_to "Log in", users_new_path %>
+      <%= link_to login_path %>
     <% end %>
       </div>
     </div>
@@ -20,6 +19,29 @@
       <div class="column is-4">
         <h2 class="title is-2 is-spaced has-text-centered">Sign Up</h2>
         <%= render 'form', user: @user %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+        <h2 class="title is-2 is-spaced has-text-centered">Sign In</h2>
+        
+          <div class="row">
+            <div class="span6 offset3">
+              <%= form_for(:session, url: sessions_path) do |f| %>
+
+                <%= f.label :name %>
+                <%= f.text_field :name, class: "input" %>
+
+                <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+              <% end %>
+            </div>
+          </div>
+
       </div>
     </div>
   </div>
