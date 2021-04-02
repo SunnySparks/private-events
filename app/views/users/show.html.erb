@@ -7,7 +7,7 @@
       <h1>Welcome, <%= current_user.name %>!</h1>
       <%= link_to "Log out", logout_path %>
     <% else %>
-      <%= link_to login_path %>
+      <%= link_to "Log in", users_new_path %>
     <% end %>
       </div>
     </div>
@@ -37,10 +37,16 @@
 	<div class="columns is-centered">
       <div class="column is-4">
       <h2 class="title is-2 is-spaced has-text-centered">My Events</h2>
-      <% @events.each do |event| %>
+      <td><%= session[:user_id] %></td></br>
+      <% if @event.creator_id == session[:user_id] %>
         <tr>
-        <td><%= event.location %></td></br>
-        <td><%= event.date %></td></br>
+        <td><%= @event %></td></br>
+          <% @events.each do |event| %>
+          
+            
+              <td><%= event.location %></td></br>
+              <td><%= event.date %></td></br>
+          <% end %>
         </tr>
       <% end %>
       </div>
