@@ -4,15 +4,16 @@ class UsersController < ApplicationController
     @users = User.all
     @name = current_user.name
     @event = Event.find_by(params[:id])
+    @events = Event.all
   end
 
   def show
-    @user = User.find_by(session[:user_id])
+    @user = User.find_by(params[:id])
     #@user.name = current_user.name
     @users = User.all
     @event = Event.find_by(params[:id])
     @events = Event.all
-    @attendee = @event.attendees
+    @attendees = @event.attendees
   end
 
   def new
@@ -35,6 +36,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def authenticate
+    env["warden"].authenticate!
+  end
+  
   private
 
   def user_params

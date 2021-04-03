@@ -19,7 +19,11 @@
 	<div class="columns is-centered">
       <div class="column is-4">
         <h2 class="title is-2 is-spaced has-text-centered">Upcoming Events</h2>
-        <td><%= link_to "#{@event.location}", @event %></td>
+        <% if @events.nil? %>
+        <span>No events created (yet)</span>
+      <% else %>
+      <td><%= link_to "#{@event.location}", @event %></td>
+      <% end %>
       </div>
     </div>
   </div>
