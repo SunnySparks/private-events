@@ -62,40 +62,11 @@
       <div class="column is-4">
         <h2 class="title is-2 is-spaced has-text-centered">Attending Events</h2>
         
-          <% @events.each do |event| %>
-            <% if current_user.id == event.id %>
-            <span>Names?</span>
-                  <tr>
-                  <span>Hi</span>
-                  <td><%= event.location %></td></br>
-                  <td><%= event.attendees %></td></br>
-                  </tr>
-            <% end %>
-          <% end %>
-          
-          
-          <% @attendees.each do | attendee| %>
-            
-            
-            <td><%= attendee.id %></td></br>
-                
-            
-          <% end %>
-
-          <% @events.each do |event| %>
-            
-            <td><%=  %></td></br>
-              <% if current_user.name == event.attendees.name %>
-                    <tr>
-                    <span>Hi</span>
-                    <td><%=  %></td></br>
-                    </tr>
-              <% end %>
-          <% end %>
-
-          <% @attendees.each do |attendee| %>
-            <td><%=  %></td></br>
-          <% end %>
+        <% @user.attended_events.each do |user| %>
+                <tr>
+                <td><%= user.location %></td></br>
+                </tr>
+        <% end %>
 
       </div>
     </div>
