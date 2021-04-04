@@ -29,6 +29,7 @@
             <% if event.creator_id == session[:user_id] %>
               <td><%= event.location %></td></br>
               <td><%= event.date %></td></br>
+              <td><%= event.attendees.name %></td></br>
             <% end %>
           </tr>   
         <% end %>
@@ -47,21 +48,4 @@
   </div>
 </div>
 
-<div class="section">
-  <div class="container">
-	<div class="columns is-centered">
-    <h2 class="title is-2 is-spaced has-text-centered">Upcoming Events</h2>
-      <div class="column is-4">
-      <% @events.each do | event | %>
-        <tr>
-          <td><%= link_to "#{event.location}", event %></td></br>
-          <td><%=  "Event created by: " %></td>
-          <td><%=  event.creator.name %></td></br>
-          <%= button_to 'Attend', attend_event_path(@event), method: :post, confirm: 'really?' %></br>
-        </tr>
-      <% end %>
-      </div>
-    </div>
-  </div>
-</div>
 

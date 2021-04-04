@@ -32,13 +32,17 @@
 
 
 
-
 <div class="section">
   <div class="container">
 	<div class="columns is-centered">
       <div class="column is-4">
-        <h2 class="title is-2 is-spaced has-text-centered">Upcoming Events</h2>
-        <%= @event.all %>
+        <h2 class="title is-2 is-spaced has-text-centered">Previous Events</h2>
+        <% @events.past.each do |event| %>
+          <tr>
+              <td><%=link_to event.location, event_path(event) %></td></br>
+              <td><%= event.date %></td></br>
+          </tr>   
+        <% end %>
       </div>
     </div>
   </div>
@@ -48,8 +52,13 @@
   <div class="container">
 	<div class="columns is-centered">
       <div class="column is-4">
-        <h2 class="title is-2 is-spaced has-text-centered">Previous Events</h2>
-        <%= @event.all %>
+        <h2 class="title is-2 is-spaced has-text-centered">Upcoming Events</h2>
+        <% @events.upcoming.each do |event| %>
+          <tr>
+              <td><%=link_to event.location, event_path(event) %></td></br>
+              <td><%= event.date %></td></br>
+          </tr>   
+        <% end %>
       </div>
     </div>
   </div>
