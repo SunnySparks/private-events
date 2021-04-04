@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(params[:id])
-    #@user.name = current_user.name
+    # @user.name = current_user.name
     @users = User.all
     @event = Event.find_by(params[:id])
     @events = Event.all
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   def authenticate
     env["warden"].authenticate!
   end
-  
+
   private
 
   def user_params
