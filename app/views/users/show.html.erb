@@ -1,37 +1,16 @@
 <% provide(:title, @user.name) %>
+<%= render 'navbar', user: @user, event: @event %>
 <div class="section">
   <div class="container">
 	<div class="columns is-centered">
       <div class="column is-4">
-      <% if logged_in? %>
-      <h1>Welcome, <%= current_user.name %>!</h1>
-      <%= link_to "Log out", logout_path %>
-    <% else %>
+      <% if !logged_in? %>
       <%= link_to "Log in", users_new_path %>
     <% end %>
       </div>
     </div>
   </div>
 </div>
-
-
-<div class="section">
-  <div class="container">
-	<div class="columns is-centered">
-      <div class="column is-4">
-        <h2 class="title is-2 is-spaced has-text-centered">Users</h2>
-          <% @users.each do |user| %>
-            <tr>
-              <td><%= user.name %></td></br>
-              <td><%= user.id %></td></br>
-            </tr>
-          <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 
 <div class="section">
   <div class="container">
