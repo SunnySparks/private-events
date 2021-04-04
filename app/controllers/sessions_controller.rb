@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if @user
       session[:name] = @user.name
       session[:user_id] = @user.id
-      redirect_to users_index_path
+      redirect_to new_event
     else
       redirect_to sessions_create
     end

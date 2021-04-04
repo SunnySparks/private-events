@@ -21,6 +21,10 @@
       </li>
 
       <li class="nav-item">
+        <div class="p-2 "><%= link_to "Create", new_event_url %></div>
+      </li>
+
+      <li class="nav-item">
       <% if logged_in? %>
       <div class="p-2 "><%= link_to "Log out", logout_path %></div>
       <% end %>

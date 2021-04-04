@@ -1,12 +1,10 @@
 <% provide(:title, @user.name) %>
+<%= render 'navbar', user: @user, event: @event %>
 <div class="section">
   <div class="container">
 	<div class="columns is-centered">
       <div class="column is-4">
-      <% if logged_in? %>
-      <h1>Welcome, <%= current_user.name %>!</h1>
-      <%= link_to "Log out", logout_path %>
-    <% else %>
+      <% if !logged_in? %>
       <%= link_to "Log in", users_new_path %>
     <% end %>
       </div>
@@ -14,8 +12,5 @@
   </div>
 </div>
 
-<%= @events %>
-<h2>"Welcome,"</h2>
-
-<h2>"create your events here"</h2>
+<h1>"create your events here"</h1>
 <%= render 'form', event: @event %>
