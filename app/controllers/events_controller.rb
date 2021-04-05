@@ -23,7 +23,6 @@ class EventsController < ApplicationController
     @event = Event.find_by(params[:event_id])
     @events = Event.all
     @user = User.find_by(id: session[:user_id])
-    @attendees = @event.attendees
   end
 
   def create

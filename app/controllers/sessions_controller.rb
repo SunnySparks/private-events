@@ -8,9 +8,9 @@ class SessionsController < ApplicationController
     if @user
       session[:name] = @user.name
       session[:user_id] = @user.id
-      redirect_to new_event
+      redirect_to new_event_url
     else
-      redirect_to sessions_create
+      redirect_to sessions_create_url
     end
   end
 

@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+
+      <li class="nav-item">
+          <div class="p-2 "><%= link_to "Sign Up", users_new_path %></div>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNav">
+
+  <ul>
+    <li>
+        <div>
+            <h2 class="title is-2 is-spaced has-text-centered">Sign In</h2>
+        </div>
+    </li>
+
+    <li>
+    <div class="row p-2">
+      <div class="span6 offset3">
+        <%= form_for(:session, url: sessions_path) do |f| %>
+
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "input", required: true %>
+
+          <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+    </li>
+
+    </ul>
+  </div>
+</nav>

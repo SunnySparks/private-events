@@ -19,7 +19,7 @@
         <h2 class="title is-2 is-spaced has-text-centered">All the Events</h2>
         <% @events.each do |event| %>
             <tr>
-              <td><%= event.location %></td></br>
+              <td><%= link_to event.location, event_path(event) %></td></br>
               <td><%= event.date %></td></br>
             </tr>
         <% end %>
@@ -37,8 +37,9 @@
         <h2 class="title is-2 is-spaced has-text-centered">Previous Events</h2>
         <% @events.past.each do |event| %>
           <tr>
-              <td><%=link_to event.location, event_path(event) %></td></br>
+              <td><%= link_to event.location, event_path(event) %></td></br>
               <td><%= event.date %></td></br>
+              <%= button_to 'Attend', attend_event_path(@event), method: :post, confirm: 'really?' %></br>
           </tr>   
         <% end %>
       </div>

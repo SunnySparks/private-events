@@ -41,10 +41,11 @@
 	<div class="columns is-centered">
 
   <h3 class="title is-2 is-spaced has-text-centered">Attendees List</h3>
-  <span>Number of attendees: <%= User.find(@event.attendees.map { |enr| enr.id }).count %></span></br>
-  <% if @event.attendees.empty? %>
+
+  <% if @event.nil? %>
   <span>Nobody has confirmed yet, be the first one!</span>
 <% else %>
+  <span>Number of attendees: <%= User.find(@event.attendees.map { |enr| enr.id }).count %></span></br>
   <%= render 'list', event: @event %>
 <% end %>
 

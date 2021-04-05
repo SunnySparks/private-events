@@ -1,34 +1,28 @@
+<% if logged_in? %>
+  <div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+        <h2 class="title is-2 is-spaced has-text-centered">No Events</h2>
+        
+        <span>There aren't any created events yet,</span>
+        <%= link_to "Create one!", new_event_url %>
+
+      </div>
+    </div>
+  </div>
+</div>
+<% else %>
 <div class="section">
   <div class="container">
 	<div class="columns is-centered">
       <div class="column is-4">
-        <h2 class="title is-2 is-spaced has-text-centered">Sign Up</h2>
         <%= render 'form', user: @user %>
       </div>
     </div>
   </div>
 </div>
+<% end %>
 
-<div class="section">
-  <div class="container">
-	<div class="columns is-centered">
-      <div class="column is-4">
-        <h2 class="title is-2 is-spaced has-text-centered">Sign In</h2>
-        
-          <div class="row">
-            <div class="span6 offset3">
-              <%= form_for(:session, url: sessions_path) do |f| %>
 
-                <%= f.label :name %>
-                <%= f.text_field :name, class: "input", required: true %>
-
-                <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
-              <% end %>
-            </div>
-          </div>
-
-      </div>
-    </div>
-  </div>
-</div>
 

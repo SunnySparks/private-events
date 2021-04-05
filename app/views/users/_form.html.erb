@@ -1,14 +1,49 @@
-<%= form_with(model: user, local: true) do |f| %>
-    <div class="field">
-      <div class="control">
-        <%= f.label :name, class: "label" %>
-        <%= f.text_field :name, class: "input", autofocus: true, required: true %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+
+      <li class="nav-item">
+        <div class="p-2 "><%= link_to "Already have an account? Log In", login_url %></div>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNav">
+  <ul>
+    <li>
+        <div>
+        <h2 class="title is-2 is-spaced has-text-centered">Sign Up</h2>
+        </div>
+    </li>
+
+    <li>
+    <div class="row p-2">
+      <div class="span6 offset3">
+      <%= form_with(model: user, local: true) do |f| %>
+        <div class="field">
+          <div class="control">
+          
+            <%= f.label :name, class: "label" %>
+            <%= f.text_field :name, class: "input", autofocus: true, required: true %>
+            <%= f.submit "Sign Up", class: "button is-primary is-large is-fullwidth btn btn-large btn-primary" %>
+          </div>
+        </div>
+      
+        <div class="field">
+          <div class="control">
+            
+          </div>
+        </div>
+      <% end %>
       </div>
     </div>
-  
-    <div class="field">
-      <div class="control">
-        <%= f.submit "Sign Up", class: "button is-primary is-large is-fullwidth" %>
-      </div>
-    </div>
-  <% end %>
+    </li>
+
+    </ul>
+  </div>
+</nav>
