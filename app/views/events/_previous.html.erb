@@ -1,0 +1,7 @@
+<% @events.past.each do |event| %>
+    <tr>
+        <td><%= link_to event.location, event_path(event) %></td></br>
+        <td><%= event.date %></td></br>
+        <%= button_to 'Attend', attend_event_path(@event), method: :post, confirm: 'really?' %></br>
+    </tr>   
+  <% end %>

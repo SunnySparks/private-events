@@ -26,6 +26,8 @@
             <% if event.creator_id == session[:user_id] %>
               <td><%= link_to event.location, event_path(event) %></td></br>
               <td><%= event.date %></td></br>
+              <%= button_to "Invite", users_path, params: {:event_id => @event.id}, method: :get, class: "button s-large is-fullwidth btn btn-large btn-primary" %>
+              <%= link_to "users", users_path %>
             <% end %>
           </tr>   
         <% end %>

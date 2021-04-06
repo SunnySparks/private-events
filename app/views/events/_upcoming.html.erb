@@ -1,0 +1,6 @@
+<% @events.upcoming.each do |event| %>
+    <tr>
+        <td><%=link_to event.location, event_path(event) %></td></br>
+        <td><%= event.date %></td></br>
+    </tr>   
+  <% end %>
