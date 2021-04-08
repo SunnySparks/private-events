@@ -19,17 +19,18 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
     if @user.save
       session[:user_id] = @user.id
       redirect_to users_index_path
       if params[:remember_name]
-        cookies[:commenter_name] = @comment.name
+        cookies[:user_name] = @user.name
       else
-        cookies.delete(:commenter_name)
+        cookies.delete(:user_name)
       end
     else
-      flash.now[:error] = "Could not save user"
-      render :new
+      redirect_to users_new_path
+      flash.now[:notice] = "User not registered"
     end
   end
 
@@ -37,9 +38,17 @@ class UsersController < ApplicationController
     env["warden"].authenticate!
   end
 
+  def invite
+    @event = Event.find_by(id: params[:event_id])
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :id)
+  end
+
+  def name
+    params.require(:user).permit(:name)
   end
 end

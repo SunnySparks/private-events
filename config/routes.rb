@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   post  'sessions/create'
   delete  'sessions/destroy'
   get 'events/new'
+  get 'events/invitation'
+  post 'events/invitation'
 
   resources :sessions, only: [:create, :new, :destroy]
   get '/signup', to: 'users#new'
@@ -26,4 +28,5 @@ Rails.application.routes.draw do
   resources :events do
     post 'attend', on: :member
   end
+
 end

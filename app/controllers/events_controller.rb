@@ -23,6 +23,7 @@ class EventsController < ApplicationController
     @event = Event.find_by(params[:event_id])
     @events = Event.all
     @user = User.find_by(id: session[:user_id])
+    @attendees = @event.attendees
   end
 
   def create
@@ -35,6 +36,13 @@ class EventsController < ApplicationController
     end
   end
 
+  def invitation
+    @event = Event.find_by(id: params[:event_id])
+    @events = Event.all
+    @user = User.find_by(id: params[:user_name])
+    @users = User.all
+  end
+
   private
 
   def post_params
@@ -44,4 +52,5 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:location, :date)
   end
+
 end

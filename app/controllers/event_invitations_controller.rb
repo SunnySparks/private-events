@@ -34,6 +34,13 @@ class EventInvitationsController < ApplicationController
     end
   end
 
+  def invite
+    @event = Event.find_by(id: params[:event_id])
+    @user = User.find_by(id: session[:user_id])
+    @event.attendees << @user
+    @event.save
+  end
+
   private
 
   def set_event_registration

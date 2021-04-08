@@ -17,8 +17,7 @@
 	<div class="columns is-centered">
       <div class="column is-4">
       <h2 class="title is-2 is-spaced has-text-centered">Events</h2>
-
-      <% if @user.events.empty? %>
+      <% if current_user.events.nil? %>
         <span>There aren't any created events yet,</span>
         <%= link_to "Create one!", new_event_url %>
       <% else %>
