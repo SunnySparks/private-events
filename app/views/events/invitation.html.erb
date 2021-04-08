@@ -15,10 +15,12 @@
             <% if event.creator_id == session[:user_id] %>
               <td><%= link_to event.location, event_path(event) %></td></br>
               <td><%= event.date %></td></br>
+
               <%= form_with model: EventInvitation.new, url: events_invitation_path do |f| %>
-                Type the user name to invite <input id="user_name" name="user[name]" type="search" />
+                Type the user name to invite <input id="user_id" name="user[name]" type="search" />
                 <%= f.submit "Submit", class: "button is-primary is-large is-fullwidth btn btn-large btn-primary" %>
             <% end %>
+
             <% end %>
           </tr>   
         <% end %>

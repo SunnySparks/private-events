@@ -17,11 +17,6 @@
 	<div class="columns is-centered">
       <div class="column is-4">
       <h2 class="title is-2 is-spaced has-text-centered">My Events</h2>    
-      
-      
-
-
-
       <% if current_user.events.empty? %>
         <span>You haven't created any event yet,</span>
         <%= link_to "Create one!", new_event_url %>
@@ -38,6 +33,22 @@
         <% end %>
       <% end %>
      
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-4">
+        <h3 class="title is-2 is-spaced has-text-centered">Attendees List</h3>
+        <% if @event.nil? %>
+          <span>Nobody has confirmed yet, be the first one!</span>
+        <% else %>
+          <span>Number of attendees: <%= User.find(@event.attendees.map { |enr| enr.id }).count %></span></br>
+          <%= render 'list', event: @event %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -73,22 +84,6 @@
               <td><%=link_to event.location, event_path(event) %></td></br>
               <td><%= event.date %></td></br>
           </tr>   
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-4">
-        <h3 class="title is-2 is-spaced has-text-centered">Attendees List</h3>
-        <% if @event.nil? %>
-          <span>Nobody has confirmed yet, be the first one!</span>
-        <% else %>
-          <span>Number of attendees: <%= User.find(@event.attendees.map { |enr| enr.id }).count %></span></br>
-          <%= render 'list', event: @event %>
         <% end %>
       </div>
     </div>

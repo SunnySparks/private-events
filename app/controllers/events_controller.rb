@@ -37,10 +37,18 @@ class EventsController < ApplicationController
   end
 
   def invitation
-    @event = Event.find_by(id: params[:event_id])
+    @event = Event.find_by(params[:event_id])
     @events = Event.all
-    @user = User.find_by(id: params[:user_name])
+    @attendees = @event.attendees
+    @user = User.find_by(id: params[:user_id])   
     @users = User.all
+    @attendees = @events.attendees.build(attendee_params)
+
+    if @attendees.save
+      redirect_to users_show_url
+    else
+      flash.now[:notice] = "Invitation not sent"
+    end
   end
 
   private
@@ -51,6 +59,10 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:location, :date)
+  end
+
+  def event_params
+    params.require(:event).permit(:attendes)
   end
 
 end

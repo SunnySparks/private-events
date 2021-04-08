@@ -23,4 +23,15 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user
+
+  def current_event
+    if session[:event_id]
+      @current_event = Event.find(session[:event_id])
+      @current_event
+    else
+      false
+    end
+  end
+
+  helper_method :current_event
 end
