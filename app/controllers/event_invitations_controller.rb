@@ -7,8 +7,13 @@ class EventInvitationsController < ApplicationController
 
   def attend
     @event = Event.find_by(params[:event_id])
-    @event.attendees << current_user
+    @event.attendees << @user
     @event.save
+  end
+
+  def show
+    @user = User.where.not(:id=>current_user.id)
+    @users = User.all
   end
 
   def create

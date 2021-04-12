@@ -27,6 +27,10 @@
               <td><%= event.date %></td></br>
               <span>Event created by: </span>
               <td><%= event.creator.name %></td></br>
+              <% unless event.attendees.empty? %>
+              <span>Attendees: </span>
+              <td><%= event.attendees.name %></td></br>
+              <% end %>
           </tr>   
         <% end %>
       <% end %>      

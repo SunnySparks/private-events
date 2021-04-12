@@ -4,8 +4,8 @@
 <div class="section">
   <div class="container">
 	<div class="columns is-centered">
-      <div class="column is-4 pb-2">
-      <h2 class="title is-2 is-spaced has-text-centered">Invite people!</h2>      
+      <div class="column is-4">
+      <h2 class="title is-2 is-spaced has-text-centered">My Events</h2>    
       <% if current_user.events.empty? %>
         <span>You haven't created any event yet,</span>
         <%= link_to "Create one!", new_event_url %>
@@ -15,28 +15,29 @@
             <% if event.creator_id == session[:user_id] %>
               <td><%= link_to event.location, event_path(event) %></td></br>
               <td><%= event.date %></td></br>
-
-              <%= form_with model: EventInvitation.new, url: events_invitation_path do |f| %>
-                Type the user name to invite <input id="user_id" name="user[name]" type="search" />
-                <%= f.submit "Submit", class: "button is-primary is-large is-fullwidth btn btn-large btn-primary" %>
-            <% end %>
-
+              <td><%= event.attendees.name %></td></br>
             <% end %>
           </tr>   
         <% end %>
       <% end %>
-      </div>
-
-      <div class="column is-4 pt-2">
-      <h4 class="title is-2 is-spaced has-text-centered text-primary">These are the people that you can invite</h4>   
-      <% @users.each do |user| %>
-        <tr>
-            <td><%= user.name %></td></br>
-        </tr>   
-      <% end %>
-      
+     
       </div>
     </div>
   </div>
 </div>
 
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-4">
+        <h3 class="title is-2 is-spaced has-text-centered">Attendees List</h3>
+        <% if @event.nil? %>
+          <span>Nobody has confirmed yet, be the first one!</span>
+        <% else %>
+          <span>Number of attendees: <%= User.find(@event.attendees.map { |enr| enr.id }).count %></span></br>
+          <%= render 'list', event: @event %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
