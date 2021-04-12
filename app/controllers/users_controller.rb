@@ -11,6 +11,8 @@ class UsersController < ApplicationController
     @users = @user.all
     @event = Event.find_by(params[:id])
     @events = Event.all
+    @event.attendees << @user
+    @event.save
   end
 
   def new

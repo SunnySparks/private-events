@@ -15,7 +15,9 @@
             <% if event.creator_id == session[:user_id] %>
               <td><%= link_to event.location, event_path(event) %></td></br>
               <td><%= event.date %></td></br>
+              <% unless event.attendees.empty? %>
               <td><%= event.attendees.name %></td></br>
+              <% end %>
             <% end %>
           </tr>   
         <% end %>

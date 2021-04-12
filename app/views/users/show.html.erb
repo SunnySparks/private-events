@@ -26,12 +26,12 @@
             <% if event.creator_id == session[:user_id] %>
               <td><%= link_to event.location, event_path(event) %></td></br>
               <td><%= event.date %></td></br>
-              <%= form_with model: @event_invitation, url: events_invitation_path do |f| %>
-                <%= f.collection_select :user_id, @user.without([current_user]),:id,:name, include_blank: true , :method => :post %>
-                
+              <%= form_with model: @event, url: events_invitation_path do |f| %>
+                <%= f.collection_select :user_id, @user.without([current_user]),:id,:name, include_blank: true  %>                
                 <%= f.submit "Invite", class: "button is-primary is-large is-fullwidth btn btn-large btn-primary" %>
             <% end %>
             <%= button_to "Invite", events_invitation_url, params: {:event_id => @event.id}, method: :get, class: "button s-large is-fullwidth btn btn-large btn-primary" %>
+            <td><%= event.attendees.name %></td></br>
             <% end %>
           </tr>   
         <% end %>
