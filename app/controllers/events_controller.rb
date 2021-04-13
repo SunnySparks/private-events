@@ -30,26 +30,25 @@ class EventsController < ApplicationController
   def create
     @user = User.find_by(id: session[:user_id])
     @event = @user.events.build(event_params)
-    @attendees = @events.attendees.build(attendee_params)
     if @event.save
       redirect_to action: 'show', id: @event.id
     else
       render :new
     end
-    
-    if @attendees.save
-      redirect_to users_show_url
-    else
-      flash.now[:notice] = "Invitation not sent"
-    end
+
   end
 
   def invitation
     @event = Event.find_by(params[:event_id])
     @events = Event.all
     @attendees = @event.attendees
-    @user = User.find_by(id: params[:user_id])   
-    @users = User.all
+    @user = User.where.not(:id=>current_user.id)
+    @event_invitation = EventInvitation.new
+
+    if @event_invitation
+      @event.attendees << @user
+      @event.save
+    end
   end
 
   def update
