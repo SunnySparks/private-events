@@ -1,7 +1,10 @@
 class EventInvitationsController < ApplicationController
-  before_action :require_login
 
   def new
+    @event_invitation = EventInvitation.new
+  end
+
+  def index
     @event_invitation = EventInvitation.new
   end
 
@@ -17,29 +20,15 @@ class EventInvitationsController < ApplicationController
   end
 
   def create
-    @event_invitation = current_user.events.build(event_registration_params)
+    @event_invitation = EventInvitation.new(event_registration_params)
+    
+
     if @event_invitation.save
-      flash[:notice] = 'Event registration created'
-      redirect_to events_path
-    else
-      flash.now[:warning] = 'There were problems when trying to create a new event registration'
-      render action: :new
-    end
-
-    @user = User.create!(
-      id: params['user']['id'],
-      name: params['user']['name']
-    )
-
-    if @user
-      session[:user_id] = user.id
-      render json: { status: :created, user: @user }
-    else
-      render json: { status: 500 }
+      redirect_to root_path
     end
   end
 
-  def invite
+  def invitation
     @event = Event.find_by(id: params[:event_id])
     @user = User.find_by(id: session[:user_id])
     @event.attendees << @user
@@ -53,6 +42,6 @@ class EventInvitationsController < ApplicationController
   end
 
   def event_registration_params
-    params.require(:registration).permit(:user_id, :event_id)
+    params.require(:event_invitation).permit(:user_id, :event_id)
   end
 end

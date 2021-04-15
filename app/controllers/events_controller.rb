@@ -42,13 +42,11 @@ class EventsController < ApplicationController
     @event = Event.find_by(params[:event_id])
     @events = Event.all
     @attendees = @event.attendees
-    @user = User.where.not(:id=>current_user.id)
-    @event_invitation = EventInvitation.new
-
-    if @event_invitation
-      @event.attendees << @user
-      @event.save
-    end
+#    @user = User.find_by(name: params[:user_name])
+#    @user = User.find_or_create_by(name: params[:user_name])
+    @user = User.find_by(params[:name]) 
+    @event_invitation = EventInvitation.new(user_id: @user.id, event_id: @event.id)
+    @event_invitation.save
   end
 
   def update
@@ -59,10 +57,6 @@ class EventsController < ApplicationController
   end
 
   private
-
-  def post_params
-    params.require(:event).permit(:location)
-  end
 
   def event_params
     params.require(:event).permit(:location, :date)
