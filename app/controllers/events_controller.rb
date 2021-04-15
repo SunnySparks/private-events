@@ -3,7 +3,7 @@ class EventsController < ApplicationController
     @events = Event.all
     @event = current_user.events
     @user = User.find_by(id: session[:user_id])
-    @attendees = @user.attended_events.all
+    @attended_events = @user.attended_events.all
     @attendeename = @user.name
   end
 
@@ -23,7 +23,6 @@ class EventsController < ApplicationController
     @event = Event.find_by(params[:event_id])
     @events = Event.all
     @user = User.find_by(name: params[:user_name])
-    @attendees = @event.attendees
   end
 
   

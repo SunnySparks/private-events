@@ -15,7 +15,7 @@
       </li>
 
       <li class="nav-item">
-        <% unless @events.nil? %>
+        <% unless @event.nil? || @events.nil? %>
           <div class="p-2 "><%= link_to "Attendees", events_show_path %></div>
         <% end %>
       </li>

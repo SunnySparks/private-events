@@ -30,7 +30,7 @@
               <%= form_with model: @event_invitation do |f| %>
                 <%= f.collection_select :user_id, User.all,:id , :name, include_blank: true  %>     
                 <%= f.hidden_field :event_id, value: event.id %>           
-                <%= f.submit "Invite!" %>
+                <%= f.submit "Invite!", class: "button s-large is-fullwidth btn btn-large btn-primary" %>
             <% end %>
             
             <% end %>
