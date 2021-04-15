@@ -41,8 +41,6 @@ class EventsController < ApplicationController
     @event = Event.find_by(params[:event_id])
     @events = Event.all
     @attendees = @event.attendees
-#    @user = User.find_by(name: params[:user_name])
-#    @user = User.find_or_create_by(name: params[:user_name])
     @user = User.find_by(params[:name]) 
     @event_invitation = EventInvitation.new(user_id: @user.id, event_id: @event.id)
     @event_invitation.save
