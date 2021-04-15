@@ -25,7 +25,6 @@ class EventsController < ApplicationController
     @user = User.find_by(name: params[:user_name])
   end
 
-  
   def create
     @user = User.find_by(id: session[:user_id])
     @event = @user.events.build(event_params)
@@ -34,14 +33,13 @@ class EventsController < ApplicationController
     else
       render :new
     end
-
   end
 
   def invitation
     @event = Event.find_by(params[:event_id])
     @events = Event.all
     @attendees = @event.attendees
-    @user = User.find_by(params[:name]) 
+    @user = User.find_by(params[:name])
     @event_invitation = EventInvitation.new(user_id: @user.id, event_id: @event.id)
     @event_invitation.save
   end
@@ -49,7 +47,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find_by(params[:event_id])
     @events = Event.all
-    @user = User.find_by(id: params[:user_id])   
+    @user = User.find_by(id: params[:user_id])
     @users = User.all
   end
 
@@ -62,5 +60,4 @@ class EventsController < ApplicationController
   def attendee_params
     params.require(:event).permit(:attendes)
   end
-
 end
