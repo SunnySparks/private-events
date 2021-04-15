@@ -31,7 +31,7 @@ class EventsController < ApplicationController
     @user = User.find_by(id: session[:user_id])
     @event = @user.events.build(event_params)
     if @event.save
-      redirect_to action: 'show', id: @event.id
+      redirect_to users_show_path
     else
       render :new
     end

@@ -24,7 +24,7 @@ class EventInvitationsController < ApplicationController
     
 
     if @event_invitation.save
-      redirect_to root_path
+      redirect_to users_show_path
     end
   end
 

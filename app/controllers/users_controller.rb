@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to users_index_path
+      redirect_to events_new_path
       if params[:remember_name]
         cookies[:user_name] = @user.name
       else
