@@ -1,4 +1,5 @@
 class EventInvitationsController < ApplicationController
+
   def new
     @event_invitation = EventInvitation.new
   end
@@ -14,12 +15,13 @@ class EventInvitationsController < ApplicationController
   end
 
   def show
-    @user = User.where.not(id: :current_user.id)
+    @user = User.where.not(:id=>current_user.id)
     @users = User.all
   end
 
   def create
     @event_invitation = EventInvitation.new(event_registration_params)
+    
 
     if @event_invitation.save
       redirect_to users_show_path

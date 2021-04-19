@@ -63,7 +63,3 @@ Style/StringLiterals:
   Enabled: false
 Lint/UnusedMethodArgument:
   Enabled: false
-Style/IfUnlessModifier:
-  Enabled: false
-Style/GuardClause:
-  Enabled: false
