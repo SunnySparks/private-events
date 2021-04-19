@@ -30,6 +30,8 @@ In order to run the application
 
 * 4 - Then still in the terminal type `rails s` in order to get the server up and running.
 
+* 5 - bin/rails db:migrate RAILS_ENV=development
+
 
 * 5 - Go to your web browser and type the address http://localhost:3000/.
 
