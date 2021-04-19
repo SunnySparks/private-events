@@ -3,7 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.8'
 gem 'better_errors', '~> 2.1', '>= 2.1.1'
+gem 'bootstrap-sass', '~> 2.3.1.0'
 gem 'rubocop', '~>0.81.0'
+gem 'sassc'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3'
