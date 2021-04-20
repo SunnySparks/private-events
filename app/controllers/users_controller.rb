@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.where.not(id: :current_user.id)
+    @user = User.where.not(id: current_user.id)
     @users = @user.all
     @event = Event.find_by(params[:id])
     @events = Event.all
