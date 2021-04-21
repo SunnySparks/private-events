@@ -30,16 +30,19 @@ In order to run the application
 
 * 4 - Then still in the terminal type `rails s` in order to get the server up and running.
 
-* 5 - bin/rails db:migrate RAILS_ENV=development
+* 5 - In order to run the proper migrations  run the following command in oyur terminal `bin/rails db:migrate RAILS_ENV=development`.
 
 
-* 5 - Go to your web browser and type the address http://localhost:3000/.
+* 6 - Go to your web browser and type the address http://localhost:3000/.
+
+**Attention**
+- If your rails version shows you an error mentioning that application.js cannot be found, run `rails webpacker:install` inside your terminal, and reload the server
 
 
-* 6 - If it's the first time you open the project inside your browser, you will see an empty page, sign up by typing your username in the form, the you will be able to start creating your events
+* 7 - If it's the first time you open the project inside your browser, you will see an empty page, sign up by typing your username in the form, the you will be able to start creating your events
 
 
-* 7 - After you are logged in, you will be able to see the upcoming events, also you will be able to create new ones.
+* 8 - After you are logged in, you will be able to see the upcoming events, also you will be able to create new ones.
 
 
 ## Authors
