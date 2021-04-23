@@ -48,7 +48,9 @@
   <span>Nobody has confirmed yet, be the first one!</span>
 <% else %>
   <span>Number of attendees: <%= User.find(@event.attendees.map { |enr| enr.id }).count %></span></br>
-  <%= render 'list', event: @event %>
+  <% unless @attendees.nil? %>
+    <%= render 'list', event: @event %>
+  <% end %>
 <% end %>
 
 </div>
