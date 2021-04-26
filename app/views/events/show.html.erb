@@ -1,0 +1,59 @@
+<%= render 'navbar', user: @user, event: @event %>
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+      <% if !logged_in? %>
+      <%= link_to "Log in", users_new_path %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+      <h2 class="title is-2 is-spaced has-text-centered">Events</h2>
+      <% if current_user.events.nil? %>
+        <span>There aren't any created events yet,</span>
+        <%= link_to "Create one!", new_event_url %>
+      <% else %>
+        <% @events.each do |event| %>
+          <tr>
+              <td><%= event.location %></td></br>
+              <td><%= event.date %></td></br>
+              <span>Event created by: </span>
+              <td><%= event.creator.name %></td></br>
+              <% unless event.attendees.empty? %>
+              <span>Attendees: </span>
+              <td><%= event.attendees.name %></td></br>
+              <% end %>
+          </tr>   
+        <% end %>
+      <% end %>      
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+
+  <h3 class="title is-2 is-spaced has-text-centered">Attendees List</h3>
+
+  <% if @event.nil? %>
+  <span>Nobody has confirmed yet, be the first one!</span>
+<% else %>
+  <span>Number of attendees: <%= User.find(@event.attendees.map { |enr| enr.id }).count %></span></br>
+  <% unless @attendees.nil? %>
+    <%= render 'list', event: @event %>
+  <% end %>
+<% end %>
+
+</div>
+</div>
+</div>
+</div>

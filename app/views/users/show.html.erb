@@ -1,0 +1,97 @@
+<% provide(:title, @user.name) %>
+<%= render 'navbar', user: @user, event: @event %>
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+      <% if !logged_in? %>
+      <%= link_to "Log in", users_new_path %>
+    <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+      <h2 class="title is-2 is-spaced has-text-centered">My Events</h2>    
+      <% if current_user.events.empty? %>
+        <span>You haven't created any event yet,</span>
+        <%= link_to "Create one!", new_event_url %>
+      <% else %>
+        <% @events.each do |event| %>
+          <tr>
+            <% if event.creator_id == session[:user_id] %>
+              <td><%= link_to event.location, event_path(event) %></td></br>
+              <td><%= event.date %></td></br>
+              
+              <%= form_with model: @event_invitation do |f| %>
+                <%= f.collection_select :user_id, User.all,:id , :name, include_blank: true  %>     
+                <%= f.hidden_field :event_id, value: event.id %>           
+                <%= f.submit "Invite!", class: "button s-large is-fullwidth btn btn-large btn-primary" %>
+            <% end %>
+            
+            <% end %>
+          </tr>   
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-4">
+        <h3 class="title is-2 is-spaced has-text-centered">Attendees List</h3>
+        <% if @event.nil? %>
+          <span>Nobody has confirmed yet, be the first one!</span>
+        <% else %>
+          <span>Number of attendees: <%= User.find(@event.attendees.map { |enr| enr.id }).count %></span></br>
+          <%= render 'list', event: @event %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+        <h2 class="title is-2 is-spaced has-text-centered">Previous Events</h2>
+        <% if @events.past.empty? %>
+        <span> There are no past events </span>
+        <% else %>
+          <% @events.past.each do |event| %>
+            <tr>
+                <td><%=link_to event.location, event_path(event) %></td></br>
+                <td><%= event.date %></td></br>
+            </tr>
+          <% end %>   
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+        <h2 class="title is-2 is-spaced has-text-centered">Upcoming Events</h2>
+        <% @events.upcoming.each do |event| %>
+          <tr>
+              <td><%=link_to event.location, event_path(event) %></td></br>
+              <td><%= event.date %></td></br>
+          </tr>   
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

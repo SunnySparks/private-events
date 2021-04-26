@@ -1,0 +1,28 @@
+<% if logged_in? %>
+  <div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+        <h2 class="title is-2 is-spaced has-text-centered">No Events</h2>
+        
+        <span>There aren't any created events yet,</span>
+        <%= link_to "Create one!", new_event_url %>
+        <div class="p-2 "><%= link_to "Log out", logout_path %></div>
+      </div>
+    </div>
+  </div>
+</div>
+<% else %>
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+        <%= render 'form', user: @user %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+
+

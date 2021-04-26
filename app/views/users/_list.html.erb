@@ -1,0 +1,6 @@
+<%= "Attendees: " %></br>
+<% @event.attendees.each do | attendee | %>
+  <tr>
+    <td><%= attendee.name %></td></br>
+  </tr>
+<% end %>

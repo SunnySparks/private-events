@@ -1,0 +1,4 @@
+<%= form_with model: @event, url: events_invitation_path do |f| %>
+    <%= f.collection_select :user_id, @user.without([current_user]),:id,:name, include_blank: true  %>                
+    <%= f.submit "Invite", class: "button is-primary is-large is-fullwidth btn btn-large btn-primary" %>
+<% end %>

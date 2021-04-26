@@ -1,0 +1,38 @@
+<div class="container justify-content-md-center">
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+                <div class="p-5 col-lg ml-auto mr-auto">
+                <div>
+                    <div class="p-2">
+                    <h2 class="title is-2 is-spaced has-text-centered">Sign Up</h2>
+                    </div>
+
+                <div class="col-lg">
+                    <div class="span6 offset3 pt-4 pb-4">
+                    <%= form_with(model: user, local: true) do |f| %>
+                      <div class="field">
+                        <div class="control">
+                        
+                        <div class="p-1"><%= f.label :name, class: "label" %></div>
+                        <div class="p-1"><%= f.text_field :name, class: "input", autofocus: true, required: true %></div>
+                        <div class="p-1"><%= f.submit "Sign Up", class: "button is-primary is-large is-fullwidth btn btn-large btn-primary" %></div>
+                        </div>
+                      </div>
+      
+                    <% end %>
+                    </div>
+                </div>
+                </div>
+
+                <div class="col-lg ml-auto mr-auto">
+                    <div class="">
+                      <%= "Already have an account? " %>
+                      <%= link_to "Log In", login_url %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>

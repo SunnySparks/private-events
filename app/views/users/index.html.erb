@@ -1,0 +1,47 @@
+<% provide(:title, @user.name) %>
+<%= render 'navbar', user: @user, event: @event %>
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+      <% if !logged_in? %>
+      <%= link_to "Log in", users_new_path %>
+    <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+        <h2 class="title is-2 is-spaced has-text-centered">Upcoming Events</h2>
+        <% if @events.empty? %>
+          <span>No events created (yet)</span>
+        <% else %>
+          <% @events.each do |event| %>
+              <tr>
+                <td><%= link_to event.location, event_path(event) %></td></br>
+                <td><%= event.date %></td></br>
+              <% end %>
+            </tr>   
+        <% end %>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="section">
+  <div class="container">
+	<div class="columns is-centered">
+      <div class="column is-4">
+        <h2 class="title is-2 is-spaced has-text-centered">Do you want to create an event?</h2>
+        <%= link_to "Create Event", new_event_url %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+
+    <li class="nav-item">
+      <% if logged_in? %>
+        <div class="p-2 "><span>Welcome, <%= current_user.name %>!</span></div>
+      <% else %>
+      <div class="p-2 "><%= link_to "Log in", users_new_path %></div>
+      <% end %>
+    </li>
+
+      <li class="nav-item">
+          <div class="p-2 "><%= link_to "My events", users_show_path %></div>
+      </li>
+
+      <li class="nav-item">
+          <div class="p-2 "><%= link_to "Attendees", events_show_path %></div>
+      </li>
+
+      <li class="nav-item">
+          <div class="p-2 "><%= link_to "Index", events_index_path %></div>
+      </li>
+
+      <li class="nav-item">
+        <div class="p-2 "><%= link_to "Create", new_event_url %></div>
+      </li>
+
+      <li class="nav-item">
+      <% if logged_in? %>
+      <div class="p-2 "><%= link_to "Log out", logout_path %></div>
+      <% end %>
+    </li>
+    </ul>
+  </div>
+</nav>
